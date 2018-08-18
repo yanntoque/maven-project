@@ -2,10 +2,11 @@ pipeline {
     agent any
 
     environment{
-        my_tag = "${env.GIT_COMMIT}"
+        my_tag = "${env.GIT_COMMIT}".substring(0,6)
+        //my_tag = my_tag
     }
      
-    //my_tag = my_tag.substring(0,6)
+    
 
     stages{
         stage('Build'){
@@ -14,6 +15,7 @@ pipeline {
                 bat "docker build . -t tomcatwebapp:${env.BUILD_ID}"
                 bat "echo ${my_tag}"
             }
+
         }
     }
 }
