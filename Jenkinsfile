@@ -12,7 +12,6 @@ pipeline{
     The values for these user-specified parameters are made available to Pipeline steps via the params object, see the Example for its specific usage.
     */ 
     parameters{
-        string()
         string(name: 'tomcat_dev', defaultValue:'35.180.152.27', description:'Staging Server')
         string(name: 'tomcat_prod', defaultValue:'52.47.180.100', description:'Production Server')
     }
