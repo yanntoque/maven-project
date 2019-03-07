@@ -34,7 +34,7 @@ pipeline{
             parallel{
                     stage('Check connection from jenkins to ec2 instance 1'){
                         steps{
-                            sh "ssh -i var/lib/jenkins/tomcat-demo.pem ec2-user@${params.tomcat_dev}"
+                            sh "ssh -i /var/lib/jenkins/tomcat-demo.pem ec2-user@${params.tomcat_dev}"
                         }
                         post {
                             success {
@@ -49,7 +49,7 @@ pipeline{
 
                     stage('Check connection from jenkins to ec2 instance 2'){
                         steps{
-                            sh "ssh -i var/lib/jenkins/tomcat-demo.pem ec2-user@${params.tomcat_prod}"
+                            sh "ssh -i /var/lib/jenkins/tomcat-demo.pem ec2-user@${params.tomcat_prod}"
                         }
                         post {
                             success {
