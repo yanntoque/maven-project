@@ -82,6 +82,7 @@ pipeline{
         /*
         Note : in order to make the deploy jobs working do not forget
         to change the owner of to the *.pem file to jenkins:jenkins
+        Note 2 : In order to make the scp the EC2 webapps folder must have the right permissions
         */
         stage('Deploy to Staging'){
             steps{
