@@ -28,7 +28,9 @@ pipeline{
         pollSCM('* * * * *')
     }    
 
-
+    /*
+    Added -T option to avoid Pseudo-terminal error
+    */
     stages{
         stage('Initiate jenkins connection to EC2 instances'){
             parallel{
