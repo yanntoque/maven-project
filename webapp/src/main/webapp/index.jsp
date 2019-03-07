@@ -1,23 +1,52 @@
- <!DOCTYPE html>
-<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <title>Jenkins tutorial</title>
-  <!-- Bootstrap core CSS -->
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom fonts for this template -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-</head>
-  <!-- Header -->
-  <header class="masthead bg-primary text-white text-center">
+  <style>
+  .masthead {
+    height: 100vh;
+    min-height: 500px;
+    background-image: url('https://jenkins.io/images/logos/actor/actor.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  </style>
+  </head><!-- Navigation -->
     <div class="container">
-        <h1>Hello World!</h1>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home
+                  <span class="sr-only">(current)</span>
+                </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Full Page Image Header with Vertically Centered Content -->
+  <header class="masthead">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-12 text-center">
+        </div>
+      </div>
     </div>
   </header>
-</body>
-</html>
-
+  
+  <!-- Page Content -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="font-weight-light">Page Content</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus ab nulla dolorum autem nisi officiis blanditiis voluptatem hic, assumenda aspernatur facere ipsam nemo ratione cumque magnam enim fugiat reprehenderit expedita.</p>
+    </div>
+  </section>
+  
