@@ -28,7 +28,41 @@ pipeline{
         pollSCM('* * * * *')
     }    
 
+
     stages{
+        stage('Initiate jenkins connection to EC2 instances'){
+            parallel{
+                    stage('Check connection from jenkins to ec2 instance 1'){
+                        steps{
+                            sh "ssh -i var/lib/jenkins/tomcat-demo.pem ec2-user@${params.tomcat_dev}"
+                        }
+                        post {
+                            success {
+                                echo 'Connection successful'
+                            }
+
+                            failure {
+                                echo 'Can\'t connect to EC2'
+                            }
+                        }
+                    }
+
+                    stage('Check connection from jenkins to ec2 instance 2'){
+                        steps{
+                            sh "ssh -i var/lib/jenkins/tomcat-demo.pem ec2-user@${params.tomcat_prod}"
+                        }
+                        post {
+                            success {
+                                echo 'Connection successful'
+                            }
+
+                            failure {
+                                echo 'Can\'t connect to EC2'
+                            }
+                        }
+                }
+            }
+        }
         stage('Build'){
             steps{
                 sh 'mvn clean package'
