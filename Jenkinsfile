@@ -1,10 +1,11 @@
 pipeline{
+    agent any
     /*
     The agent section specifies where the entire Pipeline, or a specific stage, will execute 
     in the Jenkins environment depending on where the agent section is placed. 
     The section must be defined at the top-level inside the pipeline block, but stage-level usage is optional.
     */
-    agent any
+    
     
     /*
     The parameters directive provides a list of parameters which a user should provide when triggering the Pipeline.
