@@ -12,6 +12,7 @@ pipeline{
     The values for these user-specified parameters are made available to Pipeline steps via the params object, see the Example for its specific usage.
     */ 
     parameters{
+        string()
         string(name: 'tomcat_dev', defaultValue:'35.180.152.27', description:'Staging Server')
         string(name: 'tomcat_prod', defaultValue:'52.47.180.100', description:'Production Server')
     }
@@ -22,6 +23,7 @@ pipeline{
     The triggers currently available are cron, pollSCM and upstream
     pollSCM : * * * * * == Jekins will poll our GitHub Repo looking for any changes and that every minute of every day of every week of every month
     This cron value is not the best it's just for demo purpose
+    This will poll every branch and create a job where it finds a Jenkinsfile in the location and name you specify in the Multibranch Pipeline job configuration.
     */
     triggers{
         pollSCM('* * * * *')
