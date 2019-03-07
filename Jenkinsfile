@@ -44,11 +44,11 @@ pipeline{
 
         /*
         Note : in order to make the deploy jobs working do not forget
-        to change the owner of to the *.pem file to jenkins
+        to change the owner of to the *.pem file to jenkins:jenkins
         */
         stage('Deploy to Staging'){
             steps{
-                sh "scp -i /home/yte/Jenkins/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
+                sh "scp -i /var/lib/jenkins/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
             }
         }
         
@@ -58,7 +58,7 @@ pipeline{
                     input message:'Approve PRODUCTION Deployment?'
                 }
                 
-                sh "scp -i /home/yte/Jenkins/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps"
+                sh "scp -i /var/lib/jenkins/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps"
             }
             post {
                 success {
