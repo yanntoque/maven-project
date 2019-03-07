@@ -41,6 +41,11 @@ pipeline{
             }
         }
         
+
+        /*
+        Note : in order to make the deploy jobs working do not forget
+        to change the owner of to the *.pem file to jenkins
+        */
         stage('Deploy to Staging'){
             steps{
                 sh "scp -i /home/yte/Jenkins/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
