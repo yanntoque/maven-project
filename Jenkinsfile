@@ -7,7 +7,6 @@ pipeline {
             }
         }
 
-
         stage('Docker image build : webappbuildfromjenkins'){
             steps{
                 /* BUILD_ID : 
@@ -27,13 +26,14 @@ pipeline {
                 }
             }
         }
-        // stage('Run webappbuildfromjenkins'){
-        //     steps{
-        //         /* 
-        //         This will run a container based on the image that has been
-        //         */
-        //         sh "docker run -d -p 8181:8080  webappbuildfromjenkins:latest"
-        //     }
-        // }
+        
+        stage('Run webappbuildfromjenkins'){
+            steps{
+                /* 
+                This will run a container based on the image that has been
+                */
+                sh "docker run -d -p 8181:8080  webappbuildfromjenkins:latest"
+            }
+        }
     }
 }
