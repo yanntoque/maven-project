@@ -1,39 +1,38 @@
 pipeline {
     agent any
     stages{
-        stage('Build'){
+        stage('Build maven-project'){
             steps {
                 sh 'mvn clean package'
             }
+        }
+
+        stage('Docker image build : webappBuildFromJenkins'){
+            steps{
+                /* BUILD_ID : 
+                Every time we hit it build on jenkins,this number will increment.
+                It's used as a version number for the generated docker image.
+                That way the image will be tagged with the version number.
+                */
+                sh "docker build . -t webappBuildFromJenkins:latest -t webappBuildFromJenkins:${env.BUILD_ID}"
+            }
             post {
-                success {
-                    echo 'Now Archiving...'
-                    archiveArtifacts artifacts: '**/target/*.war'
+                    success {
+                        echo 'Image has been successufully built'
+                    }
+
+                    failure {
+                        echo 'Image build failed.'
                 }
             }
         }
-        stage('Deploy to Staging'){
-            steps{
-                build job: 'deploy-to-staging'
-            }
-        }
-        stage('Deploy to Prod'){
-            steps{
-                /*timeout build will fail in case the timeout is reached*/
-                timeout(time:5, unit:'DAYS'){
-                    input message:'Approve Production Deployment ?' /*, submitter:jenkins user allowed to approve production deployment*/
-                }
-                build job: 'deploy-to-prod'
-            }
-            post{
-                success{
-                    echo 'The code has been to PRODUCTION'
-                    /*Possibility to send email to the person that triggered the job*/
-                }
-                failure{
-                    echo 'Deployment failed'
-                }
-            }
-        }
+        // stage('Run webappBuildFromJenkins'){
+        //     steps{
+        //         /* 
+        //         This will run a container based on the image that has been
+        //         */
+        //         sh "docker run -d -p 8181:8080  webappBuildFromJenkins:latest"
+        //     }
+        // }
     }
 }
