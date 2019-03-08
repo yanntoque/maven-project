@@ -9,7 +9,9 @@ pipeline {
 
         stage('check user & test simple command from docker'){
             steps{
-                sh 'echo $USER'
+                sh 'echo $USER
+                    usermod -aG docker $USER
+                    '
                 sh 'docker image ls'
             }
         }
