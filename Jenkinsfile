@@ -7,14 +7,14 @@ pipeline {
             }
         }
 
-        stage('Docker image build : webappBuildFromJenkins'){
+        stage('Docker image build : webappbuildfromjenkins'){
             steps{
                 /* BUILD_ID : 
                 Every time we hit it build on jenkins,this number will increment.
                 It's used as a version number for the generated docker image.
                 That way the image will be tagged with the version number.
                 */
-                sh "docker build . -t webappBuildFromJenkins:latest -t webappBuildFromJenkins:${env.BUILD_ID}"
+                sh "docker build . -t webappbuildfromjenkins:latest -t webappbuildfromjenkins:${env.BUILD_ID}"
             }
             post {
                     success {
@@ -26,12 +26,12 @@ pipeline {
                 }
             }
         }
-        // stage('Run webappBuildFromJenkins'){
+        // stage('Run webappbuildfromjenkins'){
         //     steps{
         //         /* 
         //         This will run a container based on the image that has been
         //         */
-        //         sh "docker run -d -p 8181:8080  webappBuildFromJenkins:latest"
+        //         sh "docker run -d -p 8181:8080  webappbuildfromjenkins:latest"
         //     }
         // }
     }
