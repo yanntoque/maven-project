@@ -7,6 +7,13 @@ pipeline {
             }
         }
 
+        stage('check user & test simple command from docker'){
+            steps{
+                sh 'echo $USER'
+                sh 'docker image ls'
+            }
+        }
+
         stage('Docker image build : webappbuildfromjenkins'){
             steps{
                 /* BUILD_ID : 
