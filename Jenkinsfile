@@ -30,6 +30,9 @@ pipeline{
 
     /*
     Added -T option to avoid Pseudo-terminal error
+    In order to let jenkins connect to EC2 instances, you've to :
+    - connect as jenkins user : sudo su -s /bin/bash jenkin
+    - execute this command : ssh ec2-user@35.180.181.47 -i /var/lib/jenkins/tomcat-demo.pem
     */
     stages{
         stage('Initiate jenkins connection to EC2 instances'){
