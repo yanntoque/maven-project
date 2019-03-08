@@ -7,15 +7,6 @@ pipeline {
             }
         }
 
-        stage('check user & test simple command from docker'){
-            steps{
-                sh '''
-                   echo $USER
-                   usermod -aG docker $USER
-                   '''
-                sh 'docker image ls'
-            }
-        }
 
         stage('Docker image build : webappbuildfromjenkins'){
             steps{
